@@ -543,7 +543,7 @@ const Home = () => {
                 ? "/fridge"
                 : tongler === "phone"
                 ? "/phone"
-                : tongler === "computer"
+                : tongler === "computers"
                 ? "/computer"
                 : "/"
             }

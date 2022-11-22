@@ -132,4 +132,65 @@
     height: 48px;
     margin: 0 auto;
   }
-  
+  @media (max-width: 600px) {
+    .body {
+      display: block;
+      padding: 0px 20px;
+    }
+    .titleAndImage {
+      flex-grow: 25;
+      display: block;
+      img {
+        display: block;
+        margin: 10px auto;
+      }
+    }
+    .title {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 32px;
+      text-align: center;
+    }
+    .price {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 28px;
+      text-align: center;
+    }
+    .descriptionTitle {
+      text-align: center;
+    }
+    .description {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .subbarTitle {
+      font-size: 28px;
+      line-height: 32px;
+      text-align: center;
+      width: auto;
+    }
+    .subbar {
+      position: relative;
+      min-width: 220px;
+      margin-top: 20px;
+      margin-left: 0px;
+      height: auto;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+    }
+    .imageWrapper {
+      margin: 0 auto;
+      margin-bottom: 30px;
+    }
+    .addBag {
+      margin-top: 50px;
+    }
+    .addBagText {
+      font-size: 24px;
+      line-height: 28px;
+      text-align: center;
+    }
+  }

@@ -119,3 +119,55 @@
   line-height: 28px;
   color: #ffffff;
 }
+@media (max-width: 600px) {
+  .navigation {
+    height: 86px;
+    padding: 10px 20px;
+    display: block;
+    height: auto;
+  }
+  .navigationName {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .navigationItem,
+  .navigationItemActive {
+    padding-bottom: 5px;
+    .navigationName {
+      display: block;
+      padding-left: 5px;
+      border-bottom: 1px transparent solid;
+      border-left: 1px transparent solid;
+    }
+  }
+
+  .navigationItemActive {
+    padding-bottom: 5px;
+  }
+
+  .navigationItemActive .navigationName {
+    border-left: 1px black solid;
+    color: black;
+    opacity: 1;
+  }
+  .navigationName {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .product {
+    margin: 30px auto;
+    margin-bottom: 30px;
+    border: 2px black solid;
+    border-radius: 15px;
+  }
+  .pageNavigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+}

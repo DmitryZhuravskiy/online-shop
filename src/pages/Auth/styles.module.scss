@@ -68,4 +68,43 @@
     color: #fffbfb;
     cursor: pointer;
   }
-  
+  @media (max-width: 600px) {
+    .registration {
+      width: auto;
+      margin: 100px 20px;
+    }
+    .title {
+      padding: 16px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 32px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .email,
+    .password {
+      display: block;
+      margin: 5px auto;
+      width: auto;
+      height: 46px;
+      margin-bottom: 15px;
+    }
+    .text {
+      width: auto;
+      display: block;
+      padding: 0 20px;
+      margin: 10px auto;
+    }
+    .registr {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: none;
+      font-style: normal;
+    }
+    .submit {
+      display: block;
+      margin: 20px auto;
+    }
+  }

@@ -65,3 +65,33 @@
 .exit {
   margin-right: 0;
 }
+@media (max-width: 600px) {
+  .header {
+    display: block;
+    padding: 10px 20px;
+  }
+  .title {
+    display: block;
+    font-size: 20px;
+    line-height: 26px;
+    text-align: left;
+    width: 100%;
+  }
+  .description {
+    font-size: 20px;
+    line-height: 26px;
+    text-align: left;
+  }
+  .social {
+    margin: 0 auto;
+  }
+  .auth,
+  .exit {
+    margin-right: 0;
+    font-size: 18px;
+    line-height: 22px;
+  }
+  .headerBag {
+    justify-content: space-between;
+  }
+}
