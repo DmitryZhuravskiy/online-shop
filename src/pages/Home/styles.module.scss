@@ -1,5 +1,5 @@
 .navigation {
-  height: 86px;
+  min-height: 86px;
   box-sizing: border-box;
   background: rgba(23, 22, 22, 0.46);
   border-radius: 1px;
@@ -7,15 +7,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 .navigationItem {
   cursor: pointer;
+  padding: 10px;
 }
 .navigationName {
   font-style: normal;
   font-weight: 400;
-  font-size: 40px;
-  line-height: 52px;
+  font-size: 30px;
+  line-height: 42px;
   color: #020202;
   opacity: 0.5;
   border-bottom: 1px transparent solid;
@@ -70,6 +72,7 @@
   line-height: 19px;
   color: #0a0a0a;
   margin-right: 5px;
+  margin-left: 10px;
 }
 .cardImage {
   width: 20px;

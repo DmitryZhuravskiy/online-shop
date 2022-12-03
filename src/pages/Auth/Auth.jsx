@@ -1,10 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import HeaderRegAuth from "../../components/HeaderRegAuth/HeaderRegAuth";
 import styles from "./styles.module.scss";
 
 const Auth = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.password) {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <div className={styles.wrapper}>
       <HeaderRegAuth />

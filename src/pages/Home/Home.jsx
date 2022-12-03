@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import styles from "./styles.module.scss";
+import axios from "axios";
+
+
+/*
 
 const dataFridge = [
   {
@@ -153,6 +157,82 @@ const dataPhone = [
     stars: 5,
   },
 ];
+const dataComputers = [
+  {
+    id: 0,
+    image: "../images/computer.jpg",
+    name: "iRU Home 520B4GE",
+    stars: 5,
+  },
+  {
+    id: 1,
+    image: "../images/computer.jpg",
+    name: "iRU Home 520B4GE",
+    stars: 4.2,
+  },
+  {
+    id: 2,
+    image: "../images/computer.jpg",
+    name: "iRU Home 520B4GE",
+    stars: 4.1,
+  },
+  {
+    id: 3,
+    image: "../images/computer.jpg",
+    name: "iRU Home 520B4GE",
+    stars: 3.9,
+  },
+  {
+    id: 4,
+    image: "../images/computer.jpg",
+    name: "iRU Home 520B4GE",
+    stars: 4.8,
+  },
+  {
+    id: 5,
+    image: "../images/computer.jpg",
+    name: "iRU Home 520B4GE",
+    stars: 5,
+  },
+  {
+    id: 6,
+    image: "../images/computer.jpg",
+    name: "iRU Home 520B4GE",
+    stars: 4.1,
+  },
+  {
+    id: 7,
+    image: "../images/computer.jpg",
+    name: "iRU Home 520B4GE",
+    stars: 4.7,
+  },
+  {
+    id: 8,
+    image: "../images/computer.jpg",
+    name: "iRU Home 520B4GE",
+    stars: 4.8,
+  },
+  {
+    id: 9,
+    image: "../images/computer.jpg",
+    name: "iRU Home 520B4GE",
+    stars: 4.3,
+  },
+  {
+    id: 10,
+    image: "../images/computer.jpg",
+    name: "iRU Home 520B4GE",
+    stars: 4.5,
+  },
+  {
+    id: 11,
+    image: "../images/computer.jpg",
+    name: "iRU Home 520B4GE",
+    stars: 5,
+  },
+];
+*/
+
 
 const dataWashing = [
   {
@@ -304,81 +384,6 @@ const dataLaptops = [
   },
 ];
 
-const dataComputers = [
-  {
-    id: 0,
-    image: "../images/computer.jpg",
-    name: "iRU Home 520B4GE",
-    stars: 5,
-  },
-  {
-    id: 1,
-    image: "../images/computer.jpg",
-    name: "iRU Home 520B4GE",
-    stars: 4.2,
-  },
-  {
-    id: 2,
-    image: "../images/computer.jpg",
-    name: "iRU Home 520B4GE",
-    stars: 4.1,
-  },
-  {
-    id: 3,
-    image: "../images/computer.jpg",
-    name: "iRU Home 520B4GE",
-    stars: 3.9,
-  },
-  {
-    id: 4,
-    image: "../images/computer.jpg",
-    name: "iRU Home 520B4GE",
-    stars: 4.8,
-  },
-  {
-    id: 5,
-    image: "../images/computer.jpg",
-    name: "iRU Home 520B4GE",
-    stars: 5,
-  },
-  {
-    id: 6,
-    image: "../images/computer.jpg",
-    name: "iRU Home 520B4GE",
-    stars: 4.1,
-  },
-  {
-    id: 7,
-    image: "../images/computer.jpg",
-    name: "iRU Home 520B4GE",
-    stars: 4.7,
-  },
-  {
-    id: 8,
-    image: "../images/computer.jpg",
-    name: "iRU Home 520B4GE",
-    stars: 4.8,
-  },
-  {
-    id: 9,
-    image: "../images/computer.jpg",
-    name: "iRU Home 520B4GE",
-    stars: 4.3,
-  },
-  {
-    id: 10,
-    image: "../images/computer.jpg",
-    name: "iRU Home 520B4GE",
-    stars: 4.5,
-  },
-  {
-    id: 11,
-    image: "../images/computer.jpg",
-    name: "iRU Home 520B4GE",
-    stars: 5,
-  },
-];
-
 const dataTablets = [
   {
     id: 0,
@@ -455,7 +460,18 @@ const dataTablets = [
 ];
 
 const Home = () => {
-  const [tongler, setTongler] = useState("fridge");
+  const [tongler, setTongler] = useState("computer");
+  const [ourData, setOurData] = useState([]);
+
+  useEffect(() => {
+    const getDataFunction = async () => {
+      const { data } = await axios.get(
+        `https://6388d722d94a7e5040a86ba3.mockapi.io/${tongler}`
+      );
+      await setOurData(data);
+    };
+    getDataFunction();
+  }, [tongler]);
 
   return (
     <div>
@@ -503,11 +519,11 @@ const Home = () => {
         </li>
         <li
           className={
-            tongler === "computers"
+            tongler === "computer"
               ? styles.navigationItemActive
               : styles.navigationItem
           }
-          onClick={() => setTongler("computers")}
+          onClick={() => setTongler("computer")}
         >
           <p className={styles.navigationName}>Компьютеры</p>
         </li>
@@ -524,15 +540,15 @@ const Home = () => {
       </ul>
       <section className={styles.products}>
         {(tongler === "fridge"
-          ? dataFridge
+          ? ourData
           : tongler === "phone"
-          ? dataPhone
+          ? ourData
           : tongler === "washing"
           ? dataWashing
           : tongler === "laptops"
           ? dataLaptops
-          : tongler === "computers"
-          ? dataComputers
+          : tongler === "computer"
+          ? ourData
           : tongler === "tablets"
           ? dataTablets
           : ""
@@ -543,7 +559,7 @@ const Home = () => {
                 ? "/fridge"
                 : tongler === "phone"
                 ? "/phone"
-                : tongler === "computers"
+                : tongler === "computer"
                 ? "/computer"
                 : "/"
             }
