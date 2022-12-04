@@ -60,10 +60,19 @@
   margin-right: 75px;
 }
 .bag {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-right: 75px;
 }
 .exit {
   margin-right: 0;
+}
+.bagCount {
+  margin-left: 8px;
+  font-size: 28px;
+  line-height: 32px;
+  color: black;
 }
 @media (max-width: 880px) {
   .header {

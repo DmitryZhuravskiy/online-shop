@@ -1,9 +1,16 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
+import { useSelector, useDispatch } from "react-redux";
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { totalPrice, items } = useSelector((state) => state.cart);
+
+  const totalCount = items.reduce((sum, obj) => {
+    return obj.count + sum;
+  }, 0);
 
   useEffect(() => {
     if (localStorage.password == "") {
@@ -96,6 +103,7 @@ const Header = () => {
             width="40"
             height="28"
           />
+          <p className={styles.bagCount}>{totalCount}</p>
         </Link>
         <Link
           to="/registration"

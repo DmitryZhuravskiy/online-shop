@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import styles from "./styles.module.scss";
 import axios from "axios";
-
+import Card from "../../components/Card/Card";
 
 /*
 
@@ -233,7 +233,6 @@ const dataComputers = [
 ];
 */
 
-
 const dataWashing = [
   {
     id: 0,
@@ -460,6 +459,7 @@ const dataTablets = [
 ];
 
 const Home = () => {
+  const navigate = useNavigate();
   const [tongler, setTongler] = useState("computer");
   const [ourData, setOurData] = useState([]);
 
@@ -472,6 +472,12 @@ const Home = () => {
     };
     getDataFunction();
   }, [tongler]);
+
+  useEffect(() => {
+    if (localStorage.password === "") {
+      navigate("/registration");
+    }
+  }, []);
 
   return (
     <div>
@@ -553,43 +559,7 @@ const Home = () => {
           ? dataTablets
           : ""
         ).map((el) => (
-          <Link
-            to={
-              tongler === "fridge"
-                ? "/fridge"
-                : tongler === "phone"
-                ? "/phone"
-                : tongler === "computer"
-                ? "/computer"
-                : "/"
-            }
-            className={styles.product}
-            key={el.id}
-          >
-            <div className={styles.imageWrapper}>
-              <img
-                className={styles.image}
-                src={el.image}
-                alt=""
-                width="195"
-                height="135"
-              />
-            </div>
-            <div className={styles.cardInformation}>
-              <p className={styles.cardTitle}>{el.name}</p>
-              <div className={styles.cardCount}>
-                <p className={styles.count}>{el.stars}</p>
-                <div className={styles.cardImage}>
-                  <img
-                    src="../images/star-outlined.svg"
-                    width="20"
-                    height="14"
-                    alt=""
-                  />
-                </div>
-              </div>
-            </div>
-          </Link>
+          <Card tongler={tongler} el={el} />
         ))}
       </section>
       <ul className={styles.pageNavigation}>
@@ -615,3 +585,45 @@ const Home = () => {
 };
 
 export default Home;
+
+{
+  /*
+            <Link
+  to={
+    tongler === "fridge"
+      ? "/fridge"
+      : tongler === "phone"
+      ? "/phone"
+      : tongler === "computer"
+      ? "/computer"
+      : "/"
+  }
+  className={styles.product}
+  key={el.id}
+>
+  <div className={styles.imageWrapper}>
+    <img
+      className={styles.image}
+      src={el.image}
+      alt=""
+      width="195"
+      height="135"
+    />
+  </div>
+  <div className={styles.cardInformation}>
+    <p className={styles.cardTitle}>{el.name}</p>
+    <div className={styles.cardCount}>
+      <p className={styles.count}>{el.stars}</p>
+      <div className={styles.cardImage}>
+        <img
+          src="../images/star-outlined.svg"
+          width="20"
+          height="14"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+</Link>
+  */
+}

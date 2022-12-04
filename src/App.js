@@ -10,7 +10,7 @@ import Register from "./pages/Register/Register";
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="app">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/auth" element={<Auth />} />
